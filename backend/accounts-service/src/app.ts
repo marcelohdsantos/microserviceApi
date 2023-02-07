@@ -1,10 +1,15 @@
+//index.ts
 import  express  from "express";
 import bodyParser from "body-parser";
-import helmet from 'helmet';
+import helmet from "helmet";
+import accountsRouter from "./routes/accounts";
 
 const app = express();
 app.use(helmet());
-app.use(bodyParser);
+app.use(bodyParser.json());
+app.use(accountsRouter);
 
-app.listen(3000);
-console.log('Running on port 3000');
+const port = parseInt(`${process.env.PORT}`)
+
+app.listen(port);
+console.log(`Rodando na porta ${port}`);
