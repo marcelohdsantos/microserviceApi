@@ -7,7 +7,7 @@ function getAccounts(req: Request, res: Response, next: any) {
     res.json(accounts);
 }
 
-function account(req: Request, res: Response, next: any) {
+function getAccount(req: Request, res: Response, next: any) {
 
     try {
         const id = parseInt(req.params.id);
@@ -23,7 +23,6 @@ function account(req: Request, res: Response, next: any) {
         console.log(error);
         res.status(400).end();
     }
-
 }
 
 function addAccount(req: Request, res: Response, next: any) {
@@ -40,6 +39,6 @@ function addAccount(req: Request, res: Response, next: any) {
 
 export default {
     getAccounts,
-    account,
+    getAccount,
     addAccount
 }
