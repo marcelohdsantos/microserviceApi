@@ -9,7 +9,4 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(accountsRouter);
 
-const port = parseInt(`${process.env.PORT}`)
-
-app.listen(port);
-console.log(`Rodando na porta ${port}`);
+export default app;
