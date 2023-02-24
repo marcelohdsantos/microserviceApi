@@ -33,7 +33,7 @@ describe("Testando rotas se serviço account", () => {
     id: 1,
     street: "rua dos cravos",
     city: "Manaus",
-    state: "RS",    
+    state: "RS",
   };
 
   const ACCOUNTS_ENDPOINT = "/accounts/";
@@ -49,7 +49,49 @@ describe("Testando rotas se serviço account", () => {
     expect(result.body.name).toBe(ACCOUNT_PAYLOAD.street);
     expect(result.body.email).toBe(ACCOUNT_PAYLOAD.city);
     expect(result.body.password).toBe(ACCOUNT_PAYLOAD.state);
-    
+  });
+
+  it("PATCH /accounts/:id - Deve retornar statusCode 200", async () => {
+    const ACCOUNT_PAYLOAD = {
+      name: "Marcelo dos Santos",
+      email: "armarcelo@gmail.com",
+      password: "123456789",
+    };
+
+    const result = await supertest(app)
+      .patch("/account/1")
+      .send(ACCOUNT_PAYLOAD);
+
+    expect(result.statusCode).toBe(200);
+    expect(result.body.id).toBe(1);
+  });
+
+  it("PATCH /accounts/:id - Deve retornar statusCode 400", async () => {
+    const ACCOUNT_PAYLOAD = {
+      name: "Marcelo dos Santos",
+      email: "armarcelo@gmail.com",
+      password: "123456789",
+    };
+
+    const result = await supertest(app)
+      .patch("/account/abc")
+      .send(ACCOUNT_PAYLOAD);
+
+    expect(result.statusCode).toBe(400);
+  });
+
+  it("PATCH /accounts/:id - Deve retornar statusCode 404", async () => {
+    const ACCOUNT_PAYLOAD = {
+      name: "Marcelo dos Santos",
+      email: "armarcelo@gmail.com",
+      password: "123456789",
+    };
+
+    const result = await supertest(app)
+      .patch("/account/-1")
+      .send(ACCOUNT_PAYLOAD);
+
+    expect(result.statusCode).toBe(404);
   });
 });
 
