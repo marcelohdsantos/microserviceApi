@@ -79,10 +79,15 @@ function loginAccount(req: Request, res: Response, next: any) {
   }
 }
 
+function logoutAccount(req: Request, res: Response, next: any) {
+  res.json({  auth: false, token: null  });
+}
+
 export default {
   getAccounts,
   getAccount,
   addAccount,
   setAccount,
-  loginAccount
+  loginAccount,
+  logoutAccount
 };
