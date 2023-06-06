@@ -9,7 +9,8 @@ const dbHost = process.env.DB_HOST;
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
     dialect: 'mysql',
-    host: dbHost
+    host: dbHost,
+    port: 3307 // caso a porta não seja padrão
 });
 
 export default sequelize;
