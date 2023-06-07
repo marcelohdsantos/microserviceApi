@@ -13,8 +13,7 @@ const accountSchema = Joi.object({
         .email()
         .min(8)
         .max(150)
-        .required(),
-        
+        .required(),        
     password: Joi.string()       
         .min(6)
         .max(50)

@@ -1,5 +1,5 @@
 //index.ts
-import  express  from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import accountsRouter from "./routes/accounts";
