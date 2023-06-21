@@ -44,6 +44,10 @@ function findAll() {
   return AccountModel.findAll<AccountModel>();
 }
 
+function findByEmail(emailFilter: string) {
+  return AccountModel.findOne<AccountModel>({ where: {email: emailFilter }});
+}
+
 function findById(id: number) {
   return AccountModel.findByPk<AccountModel>(id);
 }
@@ -67,6 +71,7 @@ async function set(id: number, account: IAccount) {
 
 export default {
   findAll,
+  findByEmail,
   findById,
   add,
   set,
